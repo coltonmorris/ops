@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: listener
+  labels:
+    service: listener
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        service: listener
+    spec:
+      containers: 
+      - name: listener
+        image: ros:indigo-ros-core
+        env:
+        - name: ROS_HOSTNAME
+          value: listener
+        - name: ROS_MASTER_URI
+          value: http://master:11311
+        args:
+        - rostopic 
+        - echo 
+        - my_topic

@@ -5,8 +5,8 @@
 ## Servers
 There are currently 3 servers available if within *Cre8opia* network for tinkering with:   
 + `54.200.131.149` contains docker registry, and git registry, git runner?
-+ `34.219.34.172` k8s
-+ `54.190.39.143` k8s
++ `34.219.34.172` k8s master
++ `54.190.39.143` k8s node
 
 `ssh ubuntu@{server_ip}`
 

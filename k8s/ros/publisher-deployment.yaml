@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: talker
+  labels:
+    service: talker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        service: talker
+    spec:
+      containers: 
+      - name: talker
+        image: ros:kinetic-ros-core
+        env:
+        - name: ROS_HOSTNAME
+          # name of the publisher service
+          value: talker
+        - name: ROS_MASTER_URI
+          # host name or our headless master service
+          value: http://master:11311
+        args:
+        - rostopic 
+        - pub 
+        - "-r"
+        - "1" 
+        - my_topic
+        - std_msgs/String
+        - "SPLab+ICClab"
